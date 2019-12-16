@@ -40,3 +40,5 @@ https://stackoverflow.com/questions/51908004/install-phpredis-mac-osx
 Install Redis : brew install redis
 
 Start Redis server : redis-server /usr/local/etc/redis.conf
+
+config/app.php -> 'timezone' => 'Asian/Ho_Chi_Minh'
