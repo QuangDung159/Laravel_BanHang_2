@@ -1,25 +1,35 @@
 # Laravel_BanHang_2
  https://www.youtube.com/watch?v=HY7M7PuyP1Q&list=PLzrVYRai0riS_Y2L0Ox_gUL9UjPDL8p2i&index=2&t=0s
 
-Create new Laravel project : composer create-project --prefer-dist laravel/laravel Laravel_BanHang
+1. Create new Laravel project: 
 
-Clone Laravel Project from Github Clone your project.
+- composer create-project --prefer-dist laravel/laravel project-name
 
-Go to the folder application using cd command on your cmd or terminal, Run composer install on your cmd or terminal. Copy .env.example file to .env on the root folder.
+- config/app.php -> 'timezone' => 'Asian/Ho_Chi_Minh'
 
-You can type copy .env.example .env if using command prompt Windows or cp .env.example .env if using terminal, Ubuntu.
+- .env -> config your db info
 
-Open your .env file and change the database name (DB_DATABASE) to whatever you have, username (DB_USERNAME) and password (DB_PASSWORD) field correspond to your configuration. By default, the username is root and you can leave the password field empty. (This is for Xampp) By default, the username is root and password is also root.
+- config/database -> config your db info
 
-Run php artisan key:generate
+2. Clone Laravel Project from Github.
 
-Run php artisan migrate
+- Clone product from github
 
-Run php artisan serve
+- Go to the folder application using cd command on your cmd or terminal, Run composer install on your cmd or terminal. 
 
-Go to localhost:8000
+- Copy .env.example file to .env on the root folder. You can type copy .env.example .env if using command prompt Windows or cp .env.example .env if using terminal, Ubuntu.
 
-Generate model from exist database
+- Open your .env file -> config your db info
+
+- Run: php artisan key:generate
+
+- Run: php artisan migrate
+
+- Run: php artisan serve
+
+- Go to localhost:8000
+
+3. Generate model from exist database
 
 https://github.com/krlove/eloquent-model-generator
 
@@ -32,5 +42,3 @@ https://stackoverflow.com/questions/51908004/install-phpredis-mac-osx
 Install Redis : brew install redis
 
 Start Redis server : redis-server /usr/local/etc/redis.conf
-
-config/app.php -> 'timezone' => 'Asian/Ho_Chi_Minh'
