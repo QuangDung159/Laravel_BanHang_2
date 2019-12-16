@@ -14,7 +14,7 @@ class AlterProductAddFkToType extends Migration
     public function up()
     {
         Schema::table('product', function (Blueprint $table) {
-            $table->foreign('type_id', 'fk_product_to_product_type')->references('product_type_id')->on('product_type');
+            $table->foreign('product_type_id', 'fk_product_to_product_type')->references('product_type_id')->on('product_type');
         });
     }
 

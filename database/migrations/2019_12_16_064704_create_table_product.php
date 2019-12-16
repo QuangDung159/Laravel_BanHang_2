@@ -16,7 +16,7 @@ class CreateTableProduct extends Migration
         Schema::create('product', function (Blueprint $table) {
             $table->increments('product_id');
             $table->string('product_name');
-            $table->unsignedInteger('type_id');
+            $table->unsignedInteger('product_type_id');
             $table->text('product_description');
             $table->float('product_unit_price');
             $table->float('product_promotion_price');
