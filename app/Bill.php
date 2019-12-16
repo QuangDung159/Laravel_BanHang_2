@@ -20,14 +20,14 @@ class Bill extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'bill';
 
     /**
      * The primary key for the model.
-     * 
+     *
      * @var string
      */
     protected $primaryKey = 'bill_id';
@@ -42,14 +42,14 @@ class Bill extends Model
      */
     public function customer()
     {
-        return $this->belongsTo('App\Customer', null, 'customer_id');
+        return $this->belongsTo('App\Customer', 'customer_id', 'customer_id');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function billProducts()
+    public function billProduct()
     {
-        return $this->hasMany('App\BillProduct', null, 'bill_id');
+        return $this->hasMany('App\BillProduct', 'bill_id', 'bill_id');
     }
 }

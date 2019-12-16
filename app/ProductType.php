@@ -17,14 +17,14 @@ class ProductType extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'product_type';
 
     /**
      * The primary key for the model.
-     * 
+     *
      * @var string
      */
     protected $primaryKey = 'product_type_id';
@@ -37,8 +37,8 @@ class ProductType extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function products()
+    public function product()
     {
-        return $this->hasMany('App\Product', 'type_id', 'product_type_id');
+        return $this->hasMany('App\Product', 'product_type_id', 'product_type_id');
     }
 }

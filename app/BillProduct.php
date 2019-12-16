@@ -18,14 +18,14 @@ class BillProduct extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'bill_product';
 
     /**
      * The primary key for the model.
-     * 
+     *
      * @var string
      */
     protected $primaryKey = 'bill_product_id';
@@ -40,6 +40,14 @@ class BillProduct extends Model
      */
     public function bill()
     {
-        return $this->belongsTo('App\Bill', null, 'bill_id');
+        return $this->belongsTo('App\Bill', 'bill_id', 'bill_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function product()
+    {
+        return $this->belongsTo('App\Product', 'product_id', 'product_id');
     }
 }

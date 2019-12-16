@@ -20,14 +20,14 @@ class Customer extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'customer';
 
     /**
      * The primary key for the model.
-     * 
+     *
      * @var string
      */
     protected $primaryKey = 'customer_id';
@@ -40,8 +40,8 @@ class Customer extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function bills()
+    public function bill()
     {
-        return $this->hasMany('App\Bill', null, 'customer_id');
+        return $this->hasMany('App\Bill', 'customer_id', 'customer_id');
     }
 }
