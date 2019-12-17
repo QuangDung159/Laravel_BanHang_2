@@ -15,5 +15,9 @@ use App\Constant;
 
 Route::group([], function () {
     Route::get('/', Constant::CONTROLLER_PAGE . 'showIndexPage');
+    Route::get('/product-by-type/{productTypeId}', Constant::CONTROLLER_PAGE . 'showProductByTypePage');
+    Route::get('/product/{productId}', Constant::CONTROLLER_PAGE . 'showProductDetailPage');
+    Route::get('/contact', Constant::CONTROLLER_PAGE . 'showContactPage');
+    Route::get('/about', Constant::CONTROLLER_PAGE . 'showAboutPage');
 });
 
