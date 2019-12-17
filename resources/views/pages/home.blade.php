@@ -6,8 +6,7 @@
                 <div class="bannercontainer">
                     <div class="banner">
                         <ul>
-                        @foreach($listSlide as $key => $slide)
-                            <!-- THE FIRST SLIDE -->
+                            @foreach($listSlide as $key => $slide)
                                 <li data-transition="boxfade" data-slotamount="20" class="active-revslide"
                                     style="width: 100%; height: 100%; overflow: hidden; z-index: 18; visibility: hidden; opacity: 0;">
                                     <div class="slotholder" style="width:100%;height:100%;" data-duration="undefined"
@@ -51,7 +50,7 @@
                                     <div class="col-sm-3">
                                         <div class="single-item">
                                             <div class="single-item-header">
-                                                <a href="product.html"><img
+                                                <a href="{{URL::to('/product')}}/{{$product->product_id}}"><img
                                                         src="{{asset('assets/images/products/')}}/{{$product->product_image}}"
                                                         width="330" height="160"
                                                         alt=""></a>
@@ -76,7 +75,8 @@
                                             <div class="single-item-caption">
                                                 <a class="add-to-cart pull-left" href="shopping_cart.html"><i
                                                         class="fa fa-shopping-cart"></i></a>
-                                                <a class="beta-btn primary" href="product.html">Details <i
+                                                <a class="beta-btn primary"
+                                                   href="{{URL::to('/product')}}/{{$product->product_id}}">Details <i
                                                         class="fa fa-chevron-right"></i></a>
                                                 <div class="clearfix"></div>
                                             </div>
@@ -95,7 +95,7 @@
                                     <div class="col-sm-3">
                                         <div class="single-item">
                                             <div class="single-item-header">
-                                                <a href="product.html"><img
+                                                <a href="{{URL::to('/product')}}/{{$product->product_id}}"><img
                                                         src="{{asset('assets/images/products/')}}/{{$product->product_image}}"
                                                         width="330" height="160"
                                                         alt=""></a>
@@ -120,7 +120,8 @@
                                             <div class="single-item-caption">
                                                 <a class="add-to-cart pull-left" href="shopping_cart.html"><i
                                                         class="fa fa-shopping-cart"></i></a>
-                                                <a class="beta-btn primary" href="product.html">Details <i
+                                                <a class="beta-btn primary"
+                                                   href="{{URL::to('/product')}}/{{$product->product_id}}">Details <i
                                                         class="fa fa-chevron-right"></i></a>
                                                 <div class="clearfix"></div>
                                             </div>

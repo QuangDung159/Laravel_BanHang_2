@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $product_created_at
  * @property int $product_updated_at
  * @property ProductType $productType
+ * @property float $product_rate
  */
 class Product extends Model
 {
@@ -37,7 +38,19 @@ class Product extends Model
     /**
      * @var array
      */
-    protected $fillable = ['product_type_id', 'product_name', 'product_description', 'product_unit_price', 'product_promotion_price', 'product_image', 'product_unit', 'product_qty', 'product_created_at', 'product_updated_at'];
+    protected $fillable = [
+        'product_type_id',
+        'product_name',
+        'product_description',
+        'product_unit_price',
+        'product_promotion_price',
+        'product_image',
+        'product_unit',
+        'product_qty',
+        'product_created_at',
+        'product_updated_at',
+        'product_rate',
+    ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

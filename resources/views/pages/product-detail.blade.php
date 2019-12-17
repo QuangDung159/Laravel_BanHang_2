@@ -18,61 +18,36 @@
         <div id="content">
             <div class="row">
                 <div class="col-sm-9">
-
                     <div class="row">
                         <div class="col-sm-4">
-                            <img src="assets/dest/images/products/6.jpg" alt="">
+                            <img src="{{asset('assets/images/products')}}/{{$product->product_image}}" alt="">
                         </div>
                         <div class="col-sm-8">
                             <div class="single-item-body">
-                                <p class="single-item-title">Sample Woman Top</p>
-                                <p class="single-item-price">
-                                    <span>$34.55</span>
-                                </p>
+                                <p class="single-item-title">{{$product->product_name}}</p>
+                                @if ($product->product_promotion_price != 0)
+                                    <div class="ribbon-wrapper">
+                                        <div class="ribbon sale">Sale</div>
+                                    </div>
+                                    <p class="single-item-price">
+                                        <span class="flash-del">${{$product->product_unit_price}}</span>
+                                        <span class="flash-sale">${{$product->product_promotion_price}}
+                                                        </span>
+                                    </p>
+                                @else
+                                    <p class="single-item-price">
+                                        <span>${{$product->product_unit_price}}</span>
+                                    </p>
+                                @endif
                             </div>
 
                             <div class="clearfix"></div>
                             <div class="space20">&nbsp;</div>
 
                             <div class="single-item-desc">
-                                <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo ms
-                                    id
-                                    quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-                                    repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum
-                                    necessitatibus
-                                    saepe.</p>
+                                <p>{{$product->product_description}}</p>
                             </div>
                             <div class="space20">&nbsp;</div>
-
-                            <p>Options:</p>
-                            <div class="single-item-options">
-                                <select class="wc-select" name="size">
-                                    <option>Size</option>
-                                    <option value="XS">XS</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                </select>
-                                <select class="wc-select" name="color">
-                                    <option>Color</option>
-                                    <option value="Red">Red</option>
-                                    <option value="Green">Green</option>
-                                    <option value="Yellow">Yellow</option>
-                                    <option value="Black">Black</option>
-                                    <option value="White">White</option>
-                                </select>
-                                <select class="wc-select" name="color">
-                                    <option>Qty</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
-                                <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i></a>
-                                <div class="clearfix"></div>
-                            </div>
                         </div>
                     </div>
 
@@ -84,15 +59,7 @@
                         </ul>
 
                         <div class="panel" id="tab-description">
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                                consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro
-                                quisquam
-                                est, qui dolorem ipsum quia dolor sit amet.</p>
-                            <p>Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
-                                dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-                                exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
-                                consequaturuis autem vel eum iure reprehenderit qui in ea voluptate velit es quam nihil
-                                molestiae consequr, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? </p>
+                            <p>{{$product->product_description}}</p>
                         </div>
                         <div class="panel" id="tab-reviews">
                             <p>No Reviews</p>
@@ -101,72 +68,44 @@
                     <div class="space50">&nbsp;</div>
                     <div class="beta-products-list">
                         <h4>Related Products</h4>
-
+                        <div class="space50">&nbsp;</div>
                         <div class="row">
-                            <div class="col-sm-4">
-                                <div class="single-item">
-                                    <div class="single-item-header">
-                                        <a href="product.html"><img src="assets/dest/images/products/4.jpg" alt=""></a>
-                                    </div>
-                                    <div class="single-item-body">
-                                        <p class="single-item-title">Sample Woman Top</p>
-                                        <p class="single-item-price">
-                                            <span>$34.55</span>
-                                        </p>
-                                    </div>
-                                    <div class="single-item-caption">
-                                        <a class="add-to-cart pull-left" href="product.html"><i
-                                                class="fa fa-shopping-cart"></i></a>
-                                        <a class="beta-btn primary" href="product.html">Details <i
-                                                class="fa fa-chevron-right"></i></a>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="single-item">
-                                    <div class="single-item-header">
-                                        <a href="product.html"><img src="assets/dest/images/products/5.jpg" alt=""></a>
-                                    </div>
-                                    <div class="single-item-body">
-                                        <p class="single-item-title">Sample Woman Top</p>
-                                        <p class="single-item-price">
-                                            <span>$34.55</span>
-                                        </p>
-                                    </div>
-                                    <div class="single-item-caption">
-                                        <a class="add-to-cart pull-left" href="product.html"><i
-                                                class="fa fa-shopping-cart"></i></a>
-                                        <a class="beta-btn primary" href="product.html">Details <i
-                                                class="fa fa-chevron-right"></i></a>
-                                        <div class="clearfix"></div>
+                            @foreach($listProductRelated as $key => $productRelated)
+                                <div class="col-sm-4">
+                                    <div class="single-item">
+                                        <div class="single-item-header">
+                                            <a href="{{URL::to('/product')}}/{{$productRelated->product_id}}"><img
+                                                    src="{{asset('assets/images/products')}}/{{$productRelated->product_image}}"
+                                                    width="330" height="160"
+                                                    alt=""></a>
+                                        </div>
+                                        <div class="single-item-body">
+                                            <p class="single-item-title">{{$productRelated->product_name}}</p>
+                                            @if ($product->product_promotion_price != 0)
+                                                <div class="ribbon-wrapper">
+                                                    <div class="ribbon sale">Sale</div>
+                                                </div>
+                                                <p class="single-item-price">
+                                                    <span class="flash-del">${{$product->product_unit_price}}</span>
+                                                    <span class="flash-sale">${{$product->product_promotion_price}}
+                                                        </span>
+                                                </p>
+                                            @else
+                                                <p class="single-item-price">
+                                                    <span>${{$product->product_unit_price}}</span>
+                                                </p>
+                                            @endif
+                                        </div>
+                                        <div class="single-item-caption">
+                                            <a class="add-to-cart pull-left" href="#"><i
+                                                    class="fa fa-shopping-cart"></i></a>
+                                            <a class="beta-btn primary" href="{{URL::to('/product')}}/{{$productRelated->product_id}}">Details <i
+                                                    class="fa fa-chevron-right"></i></a>
+                                            <div class="clearfix"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="single-item">
-                                    <div class="ribbon-wrapper">
-                                        <div class="ribbon sale">Sale</div>
-                                    </div>
-
-                                    <div class="single-item-header">
-                                        <a href="#"><img src="assets/dest/images/products/6.jpg" alt=""></a>
-                                    </div>
-                                    <div class="single-item-body">
-                                        <p class="single-item-title">Sample Woman Top</p>
-                                        <p class="single-item-price">
-                                            <span class="flash-del">$34.55</span>
-                                            <span class="flash-sale">$33.55</span>
-                                        </p>
-                                    </div>
-                                    <div class="single-item-caption">
-                                        <a class="add-to-cart pull-left" href="#"><i
-                                                class="fa fa-shopping-cart"></i></a>
-                                        <a class="beta-btn primary" href="#">Details <i class="fa fa-chevron-right"></i></a>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div> <!-- .beta-products-list -->
                 </div>
@@ -175,38 +114,27 @@
                         <h3 class="widget-title">Best Sellers</h3>
                         <div class="widget-body">
                             <div class="beta-sales beta-lists">
-                                <div class="media beta-sales-item">
-                                    <a class="pull-left" href="product.html"><img
-                                            src="assets/dest/images/products/sales/1.png" alt=""></a>
-                                    <div class="media-body">
-                                        Sample Woman Top
-                                        <span class="beta-sales-price">$34.55</span>
+                                @foreach($listProductBest as $key => $productBest)
+                                    <div class="media beta-sales-item">
+                                        <a class="pull-left" href="{{URL::to('/product')}}/{{$productBest->product_id}}"><img
+                                                src="{{asset('assets/images/products')}}/{{$productBest->product_image}}"
+                                                alt="" width="330" height="160"></a>
+                                        <div class="media-body">
+                                            {{$productBest->product_name}}
+                                            @if ($productBest->product_promotion_price != 0)
+                                                <p class="single-item-price">
+                                                    <span class="flash-del">${{$productBest->product_unit_price}}</span>
+                                                    <span class="flash-sale">${{$productBest->product_promotion_price}}
+                                                        </span>
+                                                </p>
+                                            @else
+                                                <p class="single-item-price">
+                                                    <span>${{$productBest->product_unit_price}}</span>
+                                                </p>
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="media beta-sales-item">
-                                    <a class="pull-left" href="product.html"><img
-                                            src="assets/dest/images/products/sales/2.png" alt=""></a>
-                                    <div class="media-body">
-                                        Sample Woman Top
-                                        <span class="beta-sales-price">$34.55</span>
-                                    </div>
-                                </div>
-                                <div class="media beta-sales-item">
-                                    <a class="pull-left" href="product.html"><img
-                                            src="assets/dest/images/products/sales/3.png" alt=""></a>
-                                    <div class="media-body">
-                                        Sample Woman Top
-                                        <span class="beta-sales-price">$34.55</span>
-                                    </div>
-                                </div>
-                                <div class="media beta-sales-item">
-                                    <a class="pull-left" href="product.html"><img
-                                            src="assets/dest/images/products/sales/4.png" alt=""></a>
-                                    <div class="media-body">
-                                        Sample Woman Top
-                                        <span class="beta-sales-price">$34.55</span>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div> <!-- best sellers widget -->
@@ -214,38 +142,27 @@
                         <h3 class="widget-title">New Products</h3>
                         <div class="widget-body">
                             <div class="beta-sales beta-lists">
-                                <div class="media beta-sales-item">
-                                    <a class="pull-left" href="product.html"><img
-                                            src="assets/dest/images/products/sales/1.png" alt=""></a>
-                                    <div class="media-body">
-                                        Sample Woman Top
-                                        <span class="beta-sales-price">$34.55</span>
+                                @foreach($listProductNew as $key => $productNew)
+                                    <div class="media beta-sales-item">
+                                        <a class="pull-left" href="{{URL::to('/product')}}/{{$productNew->product_id}}"><img
+                                                src="{{asset('assets/images/products')}}/{{$productNew->product_image}}"
+                                                alt="" width="330" height="160"></a>
+                                        <div class="media-body">
+                                            {{$productNew->product_name}}
+                                            @if ($productNew->product_promotion_price != 0)
+                                                <p class="single-item-price">
+                                                    <span class="flash-del">${{$productNew->product_unit_price}}</span>
+                                                    <span class="flash-sale">${{$productNew->product_promotion_price}}
+                                                        </span>
+                                                </p>
+                                            @else
+                                                <p class="single-item-price">
+                                                    <span>${{$productNew->product_unit_price}}</span>
+                                                </p>
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="media beta-sales-item">
-                                    <a class="pull-left" href="product.html"><img
-                                            src="assets/dest/images/products/sales/2.png" alt=""></a>
-                                    <div class="media-body">
-                                        Sample Woman Top
-                                        <span class="beta-sales-price">$34.55</span>
-                                    </div>
-                                </div>
-                                <div class="media beta-sales-item">
-                                    <a class="pull-left" href="product.html"><img
-                                            src="assets/dest/images/products/sales/3.png" alt=""></a>
-                                    <div class="media-body">
-                                        Sample Woman Top
-                                        <span class="beta-sales-price">$34.55</span>
-                                    </div>
-                                </div>
-                                <div class="media beta-sales-item">
-                                    <a class="pull-left" href="product.html"><img
-                                            src="assets/dest/images/products/sales/4.png" alt=""></a>
-                                    <div class="media-body">
-                                        Sample Woman Top
-                                        <span class="beta-sales-price">$34.55</span>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div> <!-- best sellers widget -->
