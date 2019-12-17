@@ -5,7 +5,7 @@ namespace App;
 class Constant
 {
     const URL_INDEX = '/home';
-    const PATH_INDEX = 'master';
+    const PATH_INDEX = 'pages.home';
 
     // model
     const TABLE_PRODUCT = 'product';
