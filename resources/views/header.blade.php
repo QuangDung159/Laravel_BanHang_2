@@ -9,9 +9,13 @@
             </div>
             <div class="pull-right auto-width-right">
                 <ul class="top-details menu-beta l-inline">
-                    <li><a href="#"><i class="fa fa-user"></i>Tài khoản</a></li>
-                    <li><a href="#">Đăng kí</a></li>
-                    <li><a href="#">Đăng nhập</a></li>
+                    @if (Session::has('customer_id'))
+                        <li><a href="#"><i class="fa fa-user"></i>{{$customerName}}</a></li>
+                        <li><a href="{{URL::to('/sign-out')}}">Sign out</a></li>
+                    @else
+                        <li><a href="{{URL::to('/sign-in')}}">Sign in</a></li>
+                        <li><a href="{{URL::to('/sign-up')}}">Sign up</a></li>
+                    @endif
                 </ul>
             </div>
             <div class="clearfix"></div>
@@ -31,33 +35,71 @@
                     </form>
                 </div>
 
-                <div class="beta-comp">
-                    <div class="cart">
-                        <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng
-                            ({{$listItemInCart->count()}}) <i
-                                class="fa fa-chevron-down"></i></div>
-                        <div class="beta-dropdown cart-body">
-                            @foreach($listItemInCart as $key => $itemInCart)
-                                <div class="cart-item">
-                                    <div class="media">
-                                        <a class="pull-left" href="{{URL::to('/product')}}/{{$itemInCart->id}}"><img
-                                                src="{{asset('assets/images/products')}}/{{$itemInCart->options->image}}"
-                                                alt=""></a>
-                                        <div class="media-body">
-                                            <span class="cart-item-title">{{$itemInCart->name}}</span>
-                                            <span
-                                                class="cart-item-amount">{{$itemInCart->qty}} x <span>${{$itemInCart->price}}</span></span>
+                @if (Session::has('customer_id'))
+                    <div class="beta-comp">
+                        <div class="cart">
+                            <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng
+                                ({{$listItemInCart->count()}}) <i
+                                    class="fa fa-chevron-down"></i></div>
+                            <div class="beta-dropdown cart-body">
+                                @foreach($listItemInCart as $key => $itemInCart)
+                                    <div class="cart-item">
+                                        <div class="media">
+                                            <a class="pull-left" href="{{URL::to('/product')}}/{{$itemInCart->id}}"><img
+                                                    src="{{asset('assets/images/products')}}/{{$itemInCart->options->image}}"
+                                                    alt=""></a>
+                                            <div class="media-body">
+                                                <span class="cart-item-title">{{$itemInCart->name}}</span>
+                                                <span
+                                                    class="cart-item-amount">{{$itemInCart->qty}} x <span>${{$itemInCart->price}}</span></span>
+                                            </div>
                                         </div>
                                     </div>
+                                @endforeach
+                                <div class="cart-item" style="text-align: right">
+                                <span
+                                    class="cart-item-amount">Total : <span>${{$cartTotal}}</span></span>
+                                    <div style="text-align: right">
+                                        <a class="beta-btn primary"
+                                           href="{{URL::to('/cart')}}">Check out<i class="fa fa-chevron-right"></i></a>
+                                    </div>
                                 </div>
-                            @endforeach
-                        </div>
-                    </div> <!-- .cart -->
-                </div>
+                            </div>
+                        </div> <!-- .cart -->
+                    </div>
+                @endif
             </div>
             <div class="clearfix"></div>
         </div> <!-- .container -->
     </div> <!-- .header-body -->
+
+    <div class="header-bottom" style="background-color: #0277b8;">
+        <div class="container">
+            <a class="visible-xs beta-menu-toggle pull-right" href="#"><span
+                    class='beta - menu - toggle - text'>Menu</span>
+                <i class="fa fa-bars"></i></a>
+            <div class="visible-xs clearfix"></div>
+            <nav class="main-menu">
+                <ul class="l-inline ov">
+                    <li><a href="{{URL::to('/')}}">Home</a></li>
+                    <li><a href="/">Product Type</a>
+                        <ul class="sub-menu">
+                            @foreach($listProductType as $key => $productType)
+                                <li>
+                                    <a href="{{URL::to('/product-by-type')}}/{{$productType->product_type_id}}">{{$productType->product_type_name}}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    <li><a href="{{URL::to('/about')}}">About</a></li>
+                    <li><a href="{{URL::to('/contact')}}">Contact</a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </nav>
+        </div> <!-- .container -->
+    </div> <!-- .header-bottom -->
+
+    <div class="space50">&nbsp;</div>
 
     <?php
     if (Session::has('msg_add_to_cart_success')) {
@@ -73,29 +115,59 @@
     }
     ?>
 
-    <div class="header-bottom" style="background-color: #0277b8;">
-        <div class="container">
-            <a class="visible-xs beta-menu-toggle pull-right" href="#"><span
-                    class='beta - menu - toggle - text'>Menu</span>
-                <i class="fa fa-bars"></i></a>
-            <div class="visible-xs clearfix"></div>
-            <nav class="main-menu">
-                <ul class="l-inline ov">
-                    <li><a href="{{URL::to(' / ')}}">Home</a></li>
-                    <li><a href="/">Product Type</a>
-                        <ul class="sub-menu">
-                            @foreach($listProductType as $key => $productType)
-                                <li>
-                                    <a href="{{URL::to(' / product - by - type')}}/{{$productType->product_type_id}}">{{$productType->product_type_name}}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-                    <li><a href="{{URL::to(' / about')}}">About</a></li>
-                    <li><a href="{{URL::to(' / contact')}}">Contact</a></li>
-                </ul>
-                <div class="clearfix"></div>
-            </nav>
-        </div> <!-- .container -->
-    </div> <!-- .header-bottom -->
+    <?php
+    if (Session::has('msg_remove_item_from_cart_success')) {
+        echo
+            '<div class="container">
+            <div class="alert alert-success alert-dismissible fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success! </strong>' . Session::get('msg_remove_item_from_cart_success') . '
+        </div >
+        </div > ';
+
+        Session::forget('msg_remove_item_from_cart_success');
+    }
+    ?>
+
+    <?php
+    if (Session::has('msg_sign_up_success')) {
+        echo
+            '<div class="container">
+            <div class="alert alert-success alert-dismissible fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success! </strong>' . Session::get('msg_sign_up_success') . '
+        </div >
+        </div > ';
+
+        Session::forget('msg_sign_up_success');
+    }
+    ?>
+
+    <?php
+    if (Session::has('msg_sign_up_fail')) {
+        echo
+            '<div class="container">
+            <div class="alert alert-warning alert-dismissible fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success! </strong>' . Session::get('msg_sign_up_fail') . '
+        </div >
+        </div > ';
+
+        Session::forget('msg_sign_up_fail');
+    }
+    ?>
+
+    <?php
+    if (Session::has('msg_sign_in_fail')) {
+        echo
+            '<div class="container">
+            <div class="alert alert-warning alert-dismissible fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success! </strong>' . Session::get('msg_sign_in_fail') . '
+        </div >
+        </div > ';
+
+        Session::forget('msg_sign_in_fail');
+    }
+    ?>
 </div> <!-- #header -->

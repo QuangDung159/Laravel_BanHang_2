@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Customer;
 use App\ProductType;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Redis;
@@ -38,10 +39,20 @@ class AppServiceProvider extends ServiceProvider
             }
 
             $listItemInCart = Cart::content();
+            $total = Cart::total();
+
+            $customerName = '';
+            if (Session::has('customer_id')) {
+                $customerId = Session::get('customer_id');
+                $customerName = Customer::where('customer_id', '=', $customerId)
+                    ->first()->customer_name;
+            }
 
             return $view
                 ->with('listProductType', $listProductType)
-                ->with('listItemInCart', $listItemInCart);
+                ->with('listItemInCart', $listItemInCart)
+                ->with('cartTotal', $total)
+                ->with('customerName', $customerName);
         });
     }
 }
