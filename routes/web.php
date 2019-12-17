@@ -22,5 +22,7 @@ Route::group([], function () {
     Route::get('/add-product-to-cart/{productId}', Constant::CONTROLLER_CART . 'addProductToCartFromHome');
     Route::get('/add-product-to-cart/{productId}/{productTypeId}', Constant::CONTROLLER_CART . 'addProductToCartFromProductType');
     Route::get('/add-product-to-cart-from-detail/{productId}', Constant::CONTROLLER_CART . 'addProductToCartFromDetail');
+    Route::get('/cart', Constant::CONTROLLER_CART . 'showCartPage');
+    Route::get('/cart/{itemId}', Constant::CONTROLLER_CART . 'removeItemFromCart');
 });
 

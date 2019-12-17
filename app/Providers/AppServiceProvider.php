@@ -38,10 +38,12 @@ class AppServiceProvider extends ServiceProvider
             }
 
             $listItemInCart = Cart::content();
+            $total = Cart::total();
 
             return $view
                 ->with('listProductType', $listProductType)
-                ->with('listItemInCart', $listItemInCart);
+                ->with('listItemInCart', $listItemInCart)
+                ->with('cartTotal', $total);
         });
     }
 }

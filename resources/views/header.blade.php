@@ -51,6 +51,14 @@
                                     </div>
                                 </div>
                             @endforeach
+                            <div class="cart-item" style="text-align: right">
+                                <span
+                                    class="cart-item-amount">Total : <span>${{$cartTotal}}</span></span>
+                                <div style="text-align: right">
+                                    <a class="beta-btn primary"
+                                       href="{{URL::to('/cart')}}">Check out<i class="fa fa-chevron-right"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div> <!-- .cart -->
                 </div>
@@ -58,20 +66,6 @@
             <div class="clearfix"></div>
         </div> <!-- .container -->
     </div> <!-- .header-body -->
-
-    <?php
-    if (Session::has('msg_add_to_cart_success')) {
-        echo
-            '<div class="container">
-            <div class="alert alert-success alert-dismissible fade in">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Success!</strong>' . Session::get('msg_add_to_cart_success') . '
-        </div >
-        </div > ';
-
-        Session::forget('msg_add_to_cart_success');
-    }
-    ?>
 
     <div class="header-bottom" style="background-color: #0277b8;">
         <div class="container">
@@ -98,4 +92,34 @@
             </nav>
         </div> <!-- .container -->
     </div> <!-- .header-bottom -->
+
+    <div class="space50">&nbsp;</div>
+
+    <?php
+    if (Session::has('msg_add_to_cart_success')) {
+        echo
+            '<div class="container">
+            <div class="alert alert-success alert-dismissible fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success!</strong>' . Session::get('msg_add_to_cart_success') . '
+        </div >
+        </div > ';
+
+        Session::forget('msg_add_to_cart_success');
+    }
+    ?>
+
+    <?php
+    if (Session::has('msg_remove_item_from_cart_success')) {
+        echo
+            '<div class="container">
+            <div class="alert alert-success alert-dismissible fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success! </strong>' . Session::get('msg_remove_item_from_cart_success') . '
+        </div >
+        </div > ';
+
+        Session::forget('msg_remove_item_from_cart_success');
+    }
+    ?>
 </div> <!-- #header -->
