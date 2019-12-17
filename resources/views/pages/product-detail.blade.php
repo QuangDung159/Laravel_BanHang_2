@@ -48,6 +48,10 @@
                                 <p>{{$product->product_description}}</p>
                             </div>
                             <div class="space20">&nbsp;</div>
+                            <a class="add-to-cart pull-left"
+                               href="{{URL::to('/add-product-to-cart-from-detail')}}/{{$product->product_id}}"><i
+                                    class="fa fa-shopping-cart"></i></a>
+                            <div class="space20">&nbsp;</div>
                         </div>
                     </div>
 
@@ -97,9 +101,8 @@
                                             @endif
                                         </div>
                                         <div class="single-item-caption">
-                                            <a class="add-to-cart pull-left" href="#"><i
-                                                    class="fa fa-shopping-cart"></i></a>
-                                            <a class="beta-btn primary" href="{{URL::to('/product')}}/{{$productRelated->product_id}}">Details <i
+                                            <a class="beta-btn primary"
+                                               href="{{URL::to('/product')}}/{{$productRelated->product_id}}">Details <i
                                                     class="fa fa-chevron-right"></i></a>
                                             <div class="clearfix"></div>
                                         </div>
@@ -116,7 +119,8 @@
                             <div class="beta-sales beta-lists">
                                 @foreach($listProductBest as $key => $productBest)
                                     <div class="media beta-sales-item">
-                                        <a class="pull-left" href="{{URL::to('/product')}}/{{$productBest->product_id}}"><img
+                                        <a class="pull-left"
+                                           href="{{URL::to('/product')}}/{{$productBest->product_id}}"><img
                                                 src="{{asset('assets/images/products')}}/{{$productBest->product_image}}"
                                                 alt="" width="330" height="160"></a>
                                         <div class="media-body">

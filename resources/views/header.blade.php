@@ -81,18 +81,18 @@
             <div class="visible-xs clearfix"></div>
             <nav class="main-menu">
                 <ul class="l-inline ov">
-                    <li><a href="{{URL::to(' / ')}}">Home</a></li>
+                    <li><a href="{{URL::to('/')}}">Home</a></li>
                     <li><a href="/">Product Type</a>
                         <ul class="sub-menu">
                             @foreach($listProductType as $key => $productType)
                                 <li>
-                                    <a href="{{URL::to(' / product - by - type')}}/{{$productType->product_type_id}}">{{$productType->product_type_name}}</a>
+                                    <a href="{{URL::to('/product-by-type')}}/{{$productType->product_type_id}}">{{$productType->product_type_name}}</a>
                                 </li>
                             @endforeach
                         </ul>
                     </li>
-                    <li><a href="{{URL::to(' / about')}}">About</a></li>
-                    <li><a href="{{URL::to(' / contact')}}">Contact</a></li>
+                    <li><a href="{{URL::to('/about')}}">About</a></li>
+                    <li><a href="{{URL::to('/contact')}}">Contact</a></li>
                 </ul>
                 <div class="clearfix"></div>
             </nav>
