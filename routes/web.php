@@ -19,5 +19,6 @@ Route::group([], function () {
     Route::get('/product/{productId}', Constant::CONTROLLER_PAGE . 'showProductDetailPage');
     Route::get('/contact', Constant::CONTROLLER_PAGE . 'showContactPage');
     Route::get('/about', Constant::CONTROLLER_PAGE . 'showAboutPage');
+    Route::get('/add-product-to-cart/{productId}', Constant::CONTROLLER_CART . 'addProductToCartFromHome');
 });
 

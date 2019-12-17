@@ -23,4 +23,5 @@ class Constant
 
     // controller
     const CONTROLLER_PAGE = 'PageController@';
+    const CONTROLLER_CART = 'CartController@';
 }
