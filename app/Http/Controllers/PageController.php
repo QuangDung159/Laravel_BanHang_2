@@ -3,13 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Constant;
+use App\Product;
+use App\Slide;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function showIndexPage()
     {
-        return view(Constant::PATH_INDEX);
+        $listSlide = Slide::all();
+
+        $listNewProduct = Product::orderBy('product_created_at', 'desc')
+            ->take('4')->get();
+
+        $listTopProduct = Product::orderBy('product_created_at', 'asc')
+            ->take(4)->get();
+
+        return view(Constant::PATH_INDEX)
+            ->with('listSlide', $listSlide)
+            ->with('listNewProduct', $listNewProduct)
+            ->with('listTopProduct', $listTopProduct);
     }
 
     public function showProductByTypePage($productTypeId)
