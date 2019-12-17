@@ -58,16 +58,20 @@
                                             </div>
                                             <div class="single-item-body">
                                                 <p class="single-item-title">{{$product->product_name}}</p>
-                                                <p class="single-item-price">
-                                                    @if ($product->product_promotion_price != 0)
+                                                @if ($product->product_promotion_price != 0)
+                                                    <div class="ribbon-wrapper">
+                                                        <div class="ribbon sale">Sale</div>
+                                                    </div>
+                                                    <p class="single-item-price">
                                                         <span class="flash-del">${{$product->product_unit_price}}</span>
-                                                        <span
-                                                            class="flash-sale">${{$product->product_promotion_price}}
+                                                        <span class="flash-sale">${{$product->product_promotion_price}}
                                                         </span>
-                                                    @else
+                                                    </p>
+                                                @else
+                                                    <p class="single-item-price">
                                                         <span>${{$product->product_unit_price}}</span>
-                                                    @endif
-                                                </p>
+                                                    </p>
+                                                @endif
                                             </div>
                                             <div class="single-item-caption">
                                                 <a class="add-to-cart pull-left" href="shopping_cart.html"><i
@@ -98,16 +102,20 @@
                                             </div>
                                             <div class="single-item-body">
                                                 <p class="single-item-title">{{$product->product_name}}</p>
-                                                <p class="single-item-price">
-                                                    @if ($product->product_promotion_price != 0)
+                                                @if ($product->product_promotion_price != 0)
+                                                    <div class="ribbon-wrapper">
+                                                        <div class="ribbon sale">Sale</div>
+                                                    </div>
+                                                    <p class="single-item-price">
                                                         <span class="flash-del">${{$product->product_unit_price}}</span>
-                                                        <span
-                                                            class="flash-sale">${{$product->product_promotion_price}}
+                                                        <span class="flash-sale">${{$product->product_promotion_price}}
                                                         </span>
-                                                    @else
+                                                    </p>
+                                                @else
+                                                    <p class="single-item-price">
                                                         <span>${{$product->product_unit_price}}</span>
-                                                    @endif
-                                                </p>
+                                                    </p>
+                                                @endif
                                             </div>
                                             <div class="single-item-caption">
                                                 <a class="add-to-cart pull-left" href="shopping_cart.html"><i
