@@ -33,59 +33,24 @@
 
                 <div class="beta-comp">
                     <div class="cart">
-                        <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng (Trống) <i
+                        <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng
+                            ({{$listItemInCart->count()}}) <i
                                 class="fa fa-chevron-down"></i></div>
                         <div class="beta-dropdown cart-body">
-                            <div class="cart-item">
-                                <div class="media">
-                                    <a class="pull-left" href="#"><img
-                                            src="{{asset('assets/images/products/cart/1.png')}}"
-                                            alt=""></a>
-                                    <div class="media-body">
-                                        <span class="cart-item-title">Sample Woman Top</span>
-                                        <span class="cart-item-options">Size: XS; Colar: Navy</span>
-                                        <span class="cart-item-amount">1*<span>$49.50</span></span>
+                            @foreach($listItemInCart as $key => $itemInCart)
+                                <div class="cart-item">
+                                    <div class="media">
+                                        <a class="pull-left" href="{{URL::to('/product')}}/{{$itemInCart->id}}"><img
+                                                src="{{asset('assets/images/products')}}/{{$itemInCart->options->image}}"
+                                                alt=""></a>
+                                        <div class="media-body">
+                                            <span class="cart-item-title">{{$itemInCart->name}}</span>
+                                            <span
+                                                class="cart-item-amount">{{$itemInCart->qty}} x <span>${{$itemInCart->price}}</span></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="cart-item">
-                                <div class="media">
-                                    <a class="pull-left" href="#"><img
-                                            src="{{asset('assets/images/products/cart/2.png')}}"
-                                            alt=""></a>
-                                    <div class="media-body">
-                                        <span class="cart-item-title">Sample Woman Top</span>
-                                        <span class="cart-item-options">Size: XS; Colar: Navy</span>
-                                        <span class="cart-item-amount">1*<span>$49.50</span></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="cart-item">
-                                <div class="media">
-                                    <a class="pull-left" href="#"><img
-                                            src="{{asset('assets/images/products/cart/3.png')}}"
-                                            alt=""></a>
-                                    <div class="media-body">
-                                        <span class="cart-item-title">Sample Woman Top</span>
-                                        <span class="cart-item-options">Size: XS; Colar: Navy</span>
-                                        <span class="cart-item-amount">1*<span>$49.50</span></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="cart-caption">
-                                <div class="cart-total text-right">Tổng tiền: <span
-                                        class="cart-total-value">$34.55</span></div>
-                                <div class="clearfix"></div>
-
-                                <div class="center">
-                                    <div class="space10">&nbsp;</div>
-                                    <a href="checkout.html" class="beta-btn primary text-center">Đặt hàng <i
-                                            class="fa fa-chevron-right"></i></a>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div> <!-- .cart -->
                 </div>
@@ -93,25 +58,41 @@
             <div class="clearfix"></div>
         </div> <!-- .container -->
     </div> <!-- .header-body -->
+
+    <?php
+    if (Session::has('msg_add_to_cart_success')) {
+        echo
+            '<div class="container">
+            <div class="alert alert-success alert-dismissible fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success!</strong>' . Session::get('msg_add_to_cart_success') . '
+        </div >
+        </div > ';
+
+        Session::forget('msg_add_to_cart_success');
+    }
+    ?>
+
     <div class="header-bottom" style="background-color: #0277b8;">
         <div class="container">
-            <a class="visible-xs beta-menu-toggle pull-right" href="#"><span class='beta-menu-toggle-text'>Menu</span>
+            <a class="visible-xs beta-menu-toggle pull-right" href="#"><span
+                    class='beta - menu - toggle - text'>Menu</span>
                 <i class="fa fa-bars"></i></a>
             <div class="visible-xs clearfix"></div>
             <nav class="main-menu">
                 <ul class="l-inline ov">
-                    <li><a href="{{URL::to('/')}}">Home</a></li>
+                    <li><a href="{{URL::to(' / ')}}">Home</a></li>
                     <li><a href="/">Product Type</a>
                         <ul class="sub-menu">
                             @foreach($listProductType as $key => $productType)
                                 <li>
-                                    <a href="{{URL::to('/product-by-type')}}/{{$productType->product_type_id}}">{{$productType->product_type_name}}</a>
+                                    <a href="{{URL::to(' / product - by - type')}}/{{$productType->product_type_id}}">{{$productType->product_type_name}}</a>
                                 </li>
                             @endforeach
                         </ul>
                     </li>
-                    <li><a href="{{URL::to('/about')}}">About</a></li>
-                    <li><a href="{{URL::to('/contact')}}">Contact</a></li>
+                    <li><a href="{{URL::to(' / about')}}">About</a></li>
+                    <li><a href="{{URL::to(' / contact')}}">Contact</a></li>
                 </ul>
                 <div class="clearfix"></div>
             </nav>

@@ -73,7 +73,8 @@
                                                 @endif
                                             </div>
                                             <div class="single-item-caption">
-                                                <a class="add-to-cart pull-left" href="shopping_cart.html"><i
+                                                <a class="add-to-cart pull-left"
+                                                   href="{{URL::to('/add-product-to-cart')}}/{{$product->product_id}}"><i
                                                         class="fa fa-shopping-cart"></i></a>
                                                 <a class="beta-btn primary"
                                                    href="{{URL::to('/product')}}/{{$product->product_id}}">Details <i
@@ -118,7 +119,8 @@
                                                 @endif
                                             </div>
                                             <div class="single-item-caption">
-                                                <a class="add-to-cart pull-left" href="shopping_cart.html"><i
+                                                <a class="add-to-cart pull-left"
+                                                   href="{{URL::to('/add-product-to-cart')}}/{{$product->product_id}}"><i
                                                         class="fa fa-shopping-cart"></i></a>
                                                 <a class="beta-btn primary"
                                                    href="{{URL::to('/product')}}/{{$product->product_id}}">Details <i

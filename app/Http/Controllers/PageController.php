@@ -6,7 +6,9 @@ use App\Constant;
 use App\Product;
 use App\ProductType;
 use App\Slide;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class PageController extends Controller
 {
@@ -34,7 +36,7 @@ class PageController extends Controller
         $listProduct = Product::where('product_type_id', '=', $productTypeId)
             ->paginate(9);
 
-        $listProductType = ProductType::all();
+        $listProductType = json_decode(Redis::get('list_product_type'));
 
         return view(Constant::PATH_PRODUCT_BY_TYPE)
             ->with('productTypeName', $productType->product_type_name)

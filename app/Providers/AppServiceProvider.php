@@ -3,7 +3,12 @@
 namespace App\Providers;
 
 use App\ProductType;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
+
+session_start();
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,8 +30,18 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('header', function ($view) {
-            $listProductType = ProductType::all();
-            return $view->with('listProductType', $listProductType);
+            $listProductType = json_decode(Redis::get('list_product_type'));
+
+            if (!$listProductType) {
+                $listProductType = ProductType::all();
+                Redis::set('list_product_type', json_encode($listProductType));
+            }
+
+            $listItemInCart = Cart::content();
+
+            return $view
+                ->with('listProductType', $listProductType)
+                ->with('listItemInCart', $listItemInCart);
         });
     }
 }
