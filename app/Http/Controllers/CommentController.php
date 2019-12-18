@@ -27,7 +27,9 @@ class CommentController extends Controller
 
     public function getListCommentByProductId($productId)
     {
-        $listComment = Comment::where('product');
+        return Comment::where('product_id', '=', $productId)
+            ->orderBy('comment_created_at', 'desc')
+            ->paginate(5);
     }
 
 }
