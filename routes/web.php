@@ -29,5 +29,6 @@ Route::group([], function () {
     Route::get('/sign-up', Constant::CONTROLLER_CUSTOMER . 'showSignUpPage');
     Route::post('/sign-up', Constant::CONTROLLER_CUSTOMER . 'doSignUp');
     Route::get('/sign-out', Constant::CONTROLLER_CUSTOMER . 'doSignOut');
+    Route::post('/submit-comment', Constant::CONTROLLER_COMMENT . 'doSubmitComment');
 });
 

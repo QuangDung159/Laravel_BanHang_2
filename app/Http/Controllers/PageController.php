@@ -59,11 +59,16 @@ class PageController extends Controller
         $listProductNew = Product::orderBy('product_created_at', 'desc')
             ->take(4)->get();
 
+        $comment = new CommentController();
+        $listComment = $comment->getListCommentByProductId($productId);
+
+
         return view(Constant::PATH_PRODUCT_DETAIL)
             ->with('product', $product)
             ->with('listProductRelated', $listProductRelated)
             ->with('listProductBest', $listProductBest)
-            ->with('listProductNew', $listProductNew);
+            ->with('listProductNew', $listProductNew)
+            ->with('listComment', $listComment);
     }
 
     public function showContactPage()
