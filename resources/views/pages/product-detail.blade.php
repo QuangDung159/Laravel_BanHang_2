@@ -67,6 +67,15 @@
                         </div>
                         <div class="panel" id="tab-reviews">
                             <p>No Reviews</p>
+                            <form action="{{URL::to('/submit-comment')}}" method="post">
+                                {{csrf_field()}}
+                                <div class="form-block">
+                                    <label for="comment_content">Comment</label>
+                                    <textarea name="comment_content" rows="1"></textarea>
+                                    <input type="hidden" name="product_id" value="{{$product->product_id}}">
+                                    <button style="margin-top: 10px;" class="btn btn-info" type="submit">Submit</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div class="space50">&nbsp;</div>

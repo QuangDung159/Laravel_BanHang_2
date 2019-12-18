@@ -5,33 +5,27 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property int $user_id
- * @property string $user_full_name
- * @property string $user_email
- * @property string $user_password
- * @property string $user_remember_token
- * @property int $user_created_at
- * @property int $user_updated_at
+ * @property integer $id
+ * @property string $name
+ * @property string $email
+ * @property string $email_verified_at
+ * @property string $password
+ * @property string $remember_token
+ * @property string $created_at
+ * @property string $updated_at
  */
 class User extends Model
 {
     /**
-     * The table associated with the model.
+     * The "type" of the auto-incrementing ID.
      * 
      * @var string
      */
-    protected $table = 'user';
-
-    /**
-     * The primary key for the model.
-     * 
-     * @var string
-     */
-    protected $primaryKey = 'user_id';
+    protected $keyType = 'integer';
 
     /**
      * @var array
      */
-    protected $fillable = ['user_full_name', 'user_email', 'user_password', 'user_remember_token', 'user_created_at', 'user_updated_at'];
+    protected $fillable = ['name', 'email', 'email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at'];
 
 }

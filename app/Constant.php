@@ -8,6 +8,7 @@ class Constant
     const URL_CART = '/cart';
     const URL_SIGN_IN = '/sign-in';
     const URL_SIGN_UP = '/sign-up';
+    const URL_PRODUCT_DETAIL = '/product';
 
     const PATH_INDEX = 'pages.home';
     const PATH_PRODUCT_BY_TYPE = 'pages.product-by-type';
@@ -32,4 +33,5 @@ class Constant
     const CONTROLLER_PAGE = 'PageController@';
     const CONTROLLER_CART = 'CartController@';
     const CONTROLLER_CUSTOMER = 'CustomerController@';
+    const CONTROLLER_COMMENT = 'CommentController@';
 }
